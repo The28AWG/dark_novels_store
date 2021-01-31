@@ -22,7 +22,7 @@ typedef StoreItemSave<T> = void Function(SharedPreferences prefs, T model);
 typedef StoreItemClean = void Function(SharedPreferences prefs);
 
 class StoreItem<T> {
-  ValueNotifier<T?>? _value;
+  late ValueNotifier<T?> _value;
   late Function _listener;
 
   StoreItem({
@@ -32,18 +32,18 @@ class StoreItem<T> {
     StoreItemClean? clean,
   }) {
     _listener = () {
-      if (_value!.value == null && clean != null) {
+      if (_value.value == null && clean != null) {
         clean(prefs);
       }
-      if (_value?.value != null && save != null) {
-        save(prefs, _value!.value!);
+      if (_value.value != null && save != null) {
+        save(prefs, _value.value!);
       }
     };
     _value = ValueNotifier(load != null ? load(prefs) : null);
-    _value!.addListener(_listener as void Function());
+    _value.addListener(_listener as void Function());
   }
 
-  ValueNotifier<T?>? get value => _value;
+  ValueNotifier<T?> get value => _value;
 
-  void dispose() => _value!.removeListener(_listener as void Function());
+  void dispose() => _value.removeListener(_listener as void Function());
 }

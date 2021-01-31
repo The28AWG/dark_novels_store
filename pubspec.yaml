@@ -1,0 +1,20 @@
+name: dark_novels_store
+description: Хранилище Чёрного Рулета.
+version: 0.0.1
+author: Ruslan Gabdrafikov (the28awg@gmail.com)
+homepage: https://dark-novels.ru/
+
+environment:
+  sdk: '>=2.12.0-0 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^0.5.12+4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:

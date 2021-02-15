@@ -47,27 +47,3 @@ class StoreItem<T> {
 
   void dispose() => _value.removeListener(_listener as void Function());
 }
-
-class StoreNonNullItem<T> extends StoreItem<T> {
-  late ValueNotifier<T> _value2;
-
-  StoreNonNullItem({
-    required SharedPreferences prefs,
-    required StoreItemLoad<T> load,
-    required StoreItemSave<T> save,
-  }) : super(
-          prefs: prefs,
-          load: load,
-          save: save,
-        ) {
-    _listener = () {
-      save(prefs, _value.value!);
-    };
-    _value2 = ValueNotifier(load(prefs)!);
-    _value2.addListener(_listener as void Function());
-  }
-
-  ValueNotifier<T> get value => _value2;
-
-  void dispose() => _value.removeListener(_listener as void Function());
-}

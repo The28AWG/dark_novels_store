@@ -1,8 +1,6 @@
 library dark_novels_store;
 
 import 'package:flutter/material.dart';
-
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Store {

@@ -45,3 +45,41 @@ class StoreItem<T> {
 
   void dispose() => _value.removeListener(_listener as void Function());
 }
+
+class Utils {
+  static void setString(
+    SharedPreferences prefs,
+    String key,
+    String? value,
+  ) async {
+    if (value != null) {
+      await prefs.setString(key, value);
+    } else if (prefs.containsKey(key)) {
+      await prefs.remove(key);
+    }
+  }
+
+  static void setInt(
+    SharedPreferences prefs,
+    String key,
+    int? value,
+  ) async {
+    if (value != null) {
+      await prefs.setInt(key, value);
+    } else if (prefs.containsKey(key)) {
+      await prefs.remove(key);
+    }
+  }
+
+  static void setBool(
+    SharedPreferences prefs,
+    String key,
+    bool? value,
+  ) async {
+    if (value != null) {
+      await prefs.setBool(key, value);
+    } else if (prefs.containsKey(key)) {
+      await prefs.remove(key);
+    }
+  }
+}
